@@ -18,6 +18,27 @@ body{
     align-items: center;
     border-radius: 10px;
 }
+.All_filter{
+    margin-top: 10px;
+    background-color: rgb(181, 181, 1);
+    position: relative;
+    padding: 10px 20px;
+    align-items: center;
+    border-radius: 10px;
+}
+.others{
+    margin-top: 10px;
+    background-color: rgb(181, 181, 1);
+    position: relative;
+    padding: 30px 20px;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.All_filter h2{
+    text-align: center;
+    margin-bottom: 10px;
+}
 #newtask{
     width: 20%;
     height: 45px;
@@ -26,6 +47,22 @@ body{
     padding: 0 10px;
 }
 #push{
+    width: 10%;
+    margin-left: 2%;
+    height: 45px;
+    border-radius: 10px;
+    float: right;
+    cursor: pointer;
+}
+#view_backlog{
+    width: 10%;
+    margin-left: 2%;
+    height: 45px;
+    border-radius: 10px;
+    float: right;
+    cursor: pointer;
+}
+#view_alltasks{
     width: 10%;
     margin-left: 2%;
     height: 45px;
@@ -61,6 +98,7 @@ body{
     flex: 1;
     font-size: 20px;
 }
+
 #sub_tak{
     display: flex;
     padding: 10px;

@@ -23,6 +23,7 @@
                 <!-- <button id="clean" onclick={delete_all()}>Clear All</button> -->
             </div>
             <div class="All_filter">
+                <h2>Filters</h2>
                 <label for="start_date">Start-date</label>
                 <input id="start_date" onchange={start_change()} type="datetime-local">
                 <label for="end_date">End-date</label>
@@ -38,7 +39,8 @@
                 </select>
                 <button id="filter_button" onclick={filter_all()}> filter</button>
             </div>
-            <div>
+            <div class="others">
+                <label for="sort_by">Sort_by</label>
                 <select name="sort_by" id="sort_by" onchange={sort_by()}>
                     <option value="none">none</option>
                     <option value="due_date">due_date</option>

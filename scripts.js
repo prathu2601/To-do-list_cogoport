@@ -60,23 +60,30 @@ function delete_task(del){
     localStorage.setItem('sasa', JSON.stringify(taskall))
     render_list();
 }
-// function delete_subtask(main_id, sub_id){
-//     var pal = []
-//     var i = -1, z = 0
-//     allTasks.forEach((ele)=>{
-//         if(main_id == ele.id){
-//             i = z
-//             pal = ele.subtask
-//         }
-//         z++;
-//     })
-//     console.log(pal)
-//     pal = pal.filter((ele)=>{
-//         return ele.id !== sub_id;
-//     })
-//     allTasks[i].subtask = pal
-//     render_list()
-// }
+function delete_subtask(main_id, sub_id){
+    var pal = []
+    allTasks.forEach((ele)=>{
+        if(main_id == ele.id){
+            pal = ele.subtask
+        }
+    })
+    pal = pal.filter((ele)=>{
+        return ele.id !== sub_id;
+    })
+    for(let i=0; i<allTasks.length; i++){
+        if(allTasks[i].id == main_id){
+            allTasks[i].subtask = pal
+        }
+    }
+    taskall = JSON.parse(localStorage.getItem('sasa'))
+    for(let i=0; i<taskall.length; i++){
+        if(taskall[i].id == main_id){
+            taskall[i].subtask = pal
+        }
+    }
+    localStorage.setItem('sasa', JSON.stringify(taskall))
+    render_list()
+}
 
 function ismarked(i){
     var taskall = JSON.parse(localStorage.getItem('sasa'))
@@ -220,7 +227,7 @@ function render_list(){
             new_di.id = 'sub_tak'
             let new_subspan = document.createElement('span')
             new_subspan.id = "subtaskname"
-            new_subspan.innerHTML = sub_ts[j].sub
+            new_subspan.innerHTML = `subtask ${j+1} : ${sub_ts[j].sub}`
             new_di.appendChild(new_subspan)
             // let new_subtask_edit = document.createElement('button')
             // new_subtask_edit.className = "edit"
@@ -239,7 +246,7 @@ function render_list(){
             new_subtask_del.className = "delete"
             new_subtask_del.innerHTML = "Del"
             new_subtask_del.onclick = function(){delete_subtask(allTasks[i].id, sub_ts[j].id)}
-            // new_di.appendChild(new_subtask_del)
+            new_di.appendChild(new_subtask_del)
             newww_div.appendChild(new_di)
         }
         document.getElementById('tasks').appendChild(newww_div)
@@ -281,7 +288,6 @@ function new_subtask(i){
         alert("Add Subtask")
     }
     else{
-        console.log(i);
         allTasks[i].subtask.push({id:allTasks[i].count_sub, sub:sub})
         allTasks[i].count_sub++;
         localStorage.setItem('sasa', JSON.stringify(allTasks))
