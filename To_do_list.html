@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link rel="stylesheet" href="To_do_list.css">
+</head>
+<body>
+    <div>
+        <div class="main">
+            <div id="new">
+                <input type="text" oninput={update_input()} id="newtask" placeholder="task to be added">
+                <input type="datetime-local" oninput={update_due()} id="due_date">
+                <input type="text" oninput={update_category()} id="category" placeholder="category">
+                <input type="text" id="tags" placeholder="tags">
+                <select name="priority" id="prior" onchange={update_prior()}>
+                    <option value="low">low</option>
+                    <option value="medium">medium</option>
+                    <option value="high">high</option>
+                </select>
+                <button id="push" onclick={Add_task()}>Add</button>
+                <!-- <button id="clean" onclick={delete_all()}>Clear All</button> -->
+            </div>
+            <div class="All_filter">
+                <label for="start_date">Start-date</label>
+                <input id="start_date" onchange={start_change()} type="datetime-local">
+                <label for="end_date">End-date</label>
+                <input id="end_date" onchange={end_change()} type="datetime-local"> 
+                <label for="category_filter">Category_filter</label>
+                <input id="category_filter" type="text">
+                <label for="priority_filter">Priority_filter</label>
+                <select name="priority_filter" id="priority_filter">
+                    <option value="all">all</option>
+                    <option value="low">low</option>
+                    <option value="medium">medium</option>
+                    <option value="high">high</option>
+                </select>
+                <button id="filter_button" onclick={filter_all()}> filter</button>
+            </div>
+            <div>
+                <select name="sort_by" id="sort_by" onchange={sort_by()}>
+                    <option value="none">none</option>
+                    <option value="due_date">due_date</option>
+                    <option value="priority">priority</option>
+                </select>
+                <button id="view_backlog" onclick={view_backlog()}>View_backlog</button>
+                <button id="view_alltasks" onclick={view_alltasks()}>view_all_tasks</button>
+            </div>
+                <div id="tasks">
+            </div>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
